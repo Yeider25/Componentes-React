@@ -5,7 +5,7 @@ const Saludo=({username})=>(
     <div className="container">
         <div className="Fitness-User-Info">
             <h1>Hello {username}!</h1>
-            <p>La mejor serie de TV!</p>
+            <p>La positiva amigo</p>
         </div>
     </div>
 )

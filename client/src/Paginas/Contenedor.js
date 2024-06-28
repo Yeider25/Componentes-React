@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React     from "react";
 import Dibujar from "../Componentes/Dibujar";
 
 /* const Contenedor = () => {
@@ -45,6 +45,9 @@ const [data,setData]=useState([])
         }
         console.log(this.state)
     }
+
+
+
 render(){
     return <Dibujar
           form={this.state.form}

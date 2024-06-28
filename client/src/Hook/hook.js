@@ -1,17 +1,28 @@
 import { useState, useEffect } from "react";
 
 const useFetch = url => {
-    const [data,setData]=useState([])
+    const [data, setData] = useState([]);
+    const [error, setError] = useState(null);
 
     useEffect(() => {
-        const cargarComponentes=async()=>{
-            let res=await fetch(url)
-            let data= await res.json()
-            setData(data)
-        }
-        cargarComponentes()
-    }, [url])
-    return data
-}
+        const fetchData = async () => {
+            try {
+                const response = await fetch(url);
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                const data = await response.json();
+                setData(data);
+            } catch (error) {
+                console.error("Error fetching data:", error);
+                setError(error.message);
+            }
+        };
 
-export default useFetch
+        fetchData();
+    }, [url]);
+
+    return { data, error };
+};
+
+export default useFetch;
